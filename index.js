@@ -29,18 +29,30 @@ const products = [
         delete cart[id];
         showCart();
     };
+    const showTotal = () => {
+        let total = 0;
+        for (let key in cart) {
+          total += products[key - 1].price * cart[key];
+        }
+        totalPrice.innerHTML = total;
+      };
   const showCart = () => {
+    let count = Object.keys(cart).length
+    items.innerHTML = count
+    showTotal()
     let str = "";
     products.map((value) => {
       if (cart[value.id]) {
-        str += `<div>
-        <p>
-        ${value.id}-${value.name}-${value.price}
-        -<button onclick='decrement(${value.id})'>-</button>${cart[value.id]}
-        <button onclick='increment(${value.id})'>+</button>-${value.price*cart[value.id]}
-        <button onclick='removeFromCart(${value.id})'>X</button>
-        </p>
-        </div>`;
+        str += `
+        <div>
+            Product ID:${value.id}, 
+            Product Name:${value.name}, 
+            Price:${value.price},
+            Quantity:${cart[value.id]}
+            <button onclick='decrement(${value.id})'>-</button>
+            <button onclick='increment(${value.id})'>+</button> Item Price:${value.price*cart[value.id]}
+            <button onclick='removeFromCart(${value.id})'>X</button>
+        </div><br>`;
       }
     });
     divCart.innerHTML = str;
@@ -50,13 +62,11 @@ const products = [
     products.map((value) => {
       str += `
       <div>
-      <p>
         Product ID:${value.id}, 
         Product Name:${value.name}, 
         Product Price:${value.price} 
         <button onclick='addToCart(${value.id})'>Add</button>
-      </p>
-      </div>`;
+      </div><br>`;
     });
     divProducts.innerHTML = str;
     showCart();
