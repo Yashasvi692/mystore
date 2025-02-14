@@ -7,15 +7,18 @@ const products = [
   const addToCart = (id) => {
     if (!cart[id]){
     cart[id] = 1;
+    items.innerHTML = 0;
     }
     showCart();
   };
   const increment = (id) => {
+    items.innerHTML = 100;
     cart[id]+=1;
     showCart();
   }
   const decrement = (id) => {
     if(cart[id] > 1){
+        items.innerHTML = 50;
       cart[id]-=1; 
     }else{
       delete cart[id];
@@ -31,10 +34,12 @@ const products = [
     products.map((value) => {
       if (cart[value.id]) {
         str += `<div>
+        <p>
         ${value.id}-${value.name}-${value.price}
         -<button onclick='decrement(${value.id})'>-</button>${cart[value.id]}
         <button onclick='increment(${value.id})'>+</button>-${value.price*cart[value.id]}
         <button onclick='removeFromCart(${value.id})'>X</button>
+        </p>
         </div>`;
       }
     });
@@ -43,12 +48,16 @@ const products = [
   const showProducts = () => {
     let str = "";
     products.map((value) => {
-      str += `<div>
-      Product ID:${value.id}, 
-      Product Name:${value.name}, 
-      Product Price:${value.price} 
-      <button onclick='addToCart(${value.id})'>Add to Cart</button>
+      str += `
+      <div>
+      <p>
+        Product ID:${value.id}, 
+        Product Name:${value.name}, 
+        Product Price:${value.price} 
+        <button onclick='addToCart(${value.id})'>Add</button>
+      </p>
       </div>`;
     });
     divProducts.innerHTML = str;
+    showCart();
   };
