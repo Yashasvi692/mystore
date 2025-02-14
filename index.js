@@ -54,12 +54,14 @@ const showCart = () => {
   products.map((value) => {
     if (cart[value.id]) {
       str += `<div>
-      ${value.id}-${value.name}-${value.price}-
+      Product ID: ${value.id}
+      Product Name: ${value.name}
+      Product Price: ${value.price}
       <button onclick='decrement(${value.id})'>-</button>
       ${cart[value.id]}
       <button onclick='increment(${value.id})'>+</button>
-      -${value.price * cart[value.id]}
-      -<button onclick='deleteCart(${value.id})'>Delete</button>
+      ${value.price * cart[value.id]}
+      <button onclick='deleteCart(${value.id})'>Delete</button>
       </div>`;
     }
   });
@@ -72,9 +74,9 @@ const showProducts = (data) => {
     str += `
     <div class = 'box'>
     <img src='${value.url}'>
-    <h3>${value.name}</h3>
+    <h3>Product Name: ${value.name}</h3>
     <p>${value.desc}</p>
-    <h4>${value.price}</h4>
+    <h4>Price: ${value.price}</h4>
     <button onclick='addToCart(${value.id})'>Add to Cart</button>
     </div>
     `;
