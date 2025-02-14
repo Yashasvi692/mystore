@@ -1,35 +1,26 @@
-*{
-    margin: 0;  
-  }
-  .container {
-      margin: 0;
-  }
-  .header {
-      padding: 10px;
-      background-color:rgb(186, 33, 58);
-      display: flex;
-      justify-content: space-between;
-  }
-  .productBlock{
-      background-color: silver;
-  }
-  .row {
-      display: flex;
-      justify-content: center;
-  }
-  .box {
-      background-color: white;
-      margin: 10px;
-      border-radius: 20px;
-      padding: 10px;
-  }
-  .cartBlock {
-      background-color: silver;
-      width: 300px;
-      position: fixed;
-      top:0px;
-      left:100%;
-      height: 100%;
-      padding: 20px;
-      transition: 2s;
-  }
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+.row{
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.box{
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.row button{
+    background-color: green;
+    font-size: 20px;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+}
